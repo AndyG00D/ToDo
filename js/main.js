@@ -1,9 +1,10 @@
 var navBar = {
     props: ['value', 'name', 'current'],
-    template: '<button @click="changeView">{{name}}:{{current}}</button>',
+    template: '<button @click="changeNav">{{name}}:{{current}}</button>',
     methods: {
-        changeView: function() {
-            this.$parent.currentView = this.value;
+        changeNav: function() {
+                this.$emit("event-change-view", this.value);
+                console.log('click ' + this.value);
         }
     }
 };
@@ -37,7 +38,15 @@ var demo = new Vue({
     components: {
         'nav-bar': navBar,
         'content-box': contentBox
+    },
+
+    methods: {
+        changeView: function(value) {
+            this.currentView = value;
+            console.log('emit ' + value);
+        }
     }
+
 
 });
 
