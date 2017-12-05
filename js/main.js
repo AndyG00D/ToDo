@@ -19,21 +19,30 @@ var contentBox = {
     }
 };
 
+var viewBox = {
+    template: '<div>' +
+    '<div id="header">' +
+    '<h1>{{ title }}</h1>' +
+    '<nav-bar ' +
+    'v-for="(name, value) in views" ' +
+    ':value = "value" ' +
+    ':name = "name" ' +
+    ':current = "currentView" ' +
+    '@event-change-view = "changeView">' +
+    '</nav-bar>' +
+    '</div>' +
+    '<content-box :current = "currentView"></content-box>' +
+    '</div>',
 
-
-var demo = new Vue({
-
-    el: '#demo',
-
-    data: {
+    data:  function() { return {
         title: 'Название сайта',
-        views : {
+        views: {
             home: 'Главная',
             profile: 'Профиль',
             settings: 'Настройки'
         },
         currentView: 'home'
-    },
+    }},
 
     components: {
         'nav-bar': navBar,
@@ -46,7 +55,16 @@ var demo = new Vue({
             console.log('emit ' + value);
         }
     }
+};
 
 
+
+var demo = new Vue({
+
+    el: '#demo',
+
+    components: {
+        'view-box': viewBox
+    }
 });
 

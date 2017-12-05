@@ -23,28 +23,7 @@
 <body>
 
 <div id="demo">
-
-  <div id="header">
-
-    <h1>
-      {{ title }}
-    </h1>
-
-    <nav-bar
-        v-for="(name, value) in views"
-        :value = "value"
-        :name = "name"
-        :current = "currentView"
-        @event-change-view = "changeView"
-    >
-    </nav-bar>
-
-  </div>
-
-  <content-box
-          :current = "currentView"
-  ></content-box>
-
+    <view-box></view-box>
 </div>
 </body>
 
