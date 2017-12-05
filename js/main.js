@@ -1,6 +1,6 @@
 var navBar = {
-    props: ['value', 'name'],
-    template: '<button valeu="{{value}}"  @click="changeView">{{name}}</button>',
+    props: ['value', 'name', 'current'],
+    template: '<button @click="changeView">{{name}}:{{current}}</button>',
     methods: {
         changeView: function() {
             this.$parent.currentView = this.value;
@@ -9,7 +9,8 @@ var navBar = {
 };
 
 var contentBox = {
-    template: '<component v-bind:is="this.$parent.currentView"></component>',
+    props: ['current'],
+    template: '<component v-bind:is="current"></component>',
     components: {
         home: { template: '<p>Первая страница</p>' },
         profile: { template: '<p>Вторая страница</p>'  },

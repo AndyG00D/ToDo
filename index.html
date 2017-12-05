@@ -34,12 +34,15 @@
         v-for="(name, value) in views"
         :value = "value"
         :name = "name"
+        :current = "currentView"
     >
     </nav-bar>
 
   </div>
 
-  <content-box></content-box>
+  <content-box
+          :current = "currentView"
+  ></content-box>
 
 </div>
 </body>
